@@ -8,8 +8,8 @@ public class UsuarioEntity {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-
         private String documento;
+
         private String name;
         private String last_name;
         private String email;
