@@ -1,24 +1,41 @@
 package com.microservicios.usuarios.model.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
+@Getter
+@Setter
 @Entity
-@Table(name="users")
-public class UsuarioEntity {
+@Table(name = "users")
+public class UsuarioEntity implements Serializable {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String documento;
+    @Id
+    private String documento;
 
-        private String name;
-        private String last_name;
-        private String email;
-        private String password;
-        private String institution;
+    @NotEmpty
+    private String name;
 
-        public UsuarioEntity(){
+    @NotEmpty
+    private String last_name;
 
-        }
+    @NotEmpty
+    @Email
+    private String email;
+
+    @NotEmpty
+    private String password;
+
+    @NotEmpty
+    private String institution;
+
+    public UsuarioEntity() {
+
+    }
 
     public UsuarioEntity(String documento, String name, String last_name, String email, String password, String institution) {
         this.documento = documento;
@@ -29,43 +46,4 @@ public class UsuarioEntity {
         this.institution = institution;
     }
 
-    public String getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(String documento) {
-        this.documento = documento;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getInstitution() {
-        return institution;
-    }
-
-    public void setInstitution(String institution) {
-        this.institution = institution;
-    }
 }

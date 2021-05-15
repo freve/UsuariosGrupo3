@@ -1,8 +1,9 @@
-package com.microservicios.usuarios.model.serviceImpl;
+package com.microservicios.usuarios.model.service;
 
 import com.microservicios.usuarios.model.entity.UsuarioEntity;
 import com.microservicios.usuarios.model.repository.UsuarioRepository;
 import com.microservicios.usuarios.model.service.IUsuarioService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
