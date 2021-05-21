@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name = "users")
-public class UsuarioEntity implements Serializable {
+public class UsuarioEntity { //  implements Serializable
 
     @Id
     private String documento;
@@ -33,11 +33,9 @@ public class UsuarioEntity implements Serializable {
     @NotEmpty
     private String institution;
 
-    public UsuarioEntity() {
+    public UsuarioEntity () {}
 
-    }
-
-    public UsuarioEntity(String documento, String name, String last_name, String email, String password, String institution) {
+    public UsuarioEntity (String documento, String name, String last_name, String email, String password, String institution) {
         this.documento = documento;
         this.name = name;
         this.last_name = last_name;

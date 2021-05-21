@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UsuarioServiceImplement implements IUsuarioService {
 
     @Autowired
@@ -29,13 +30,11 @@ public class UsuarioServiceImplement implements IUsuarioService {
     }
 
     @Override
-    @Transactional
     public UsuarioEntity save(UsuarioEntity user) {
         return repository.save(user);
     }
 
     @Override
-    @Transactional
     public void deleteById(String document) {
         repository.deleteById(document);
     }
