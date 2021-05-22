@@ -15,7 +15,7 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService user_serv;
 
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<?> listar(){
         return ResponseEntity.ok().body(user_serv.findAll());
     }
@@ -29,7 +29,7 @@ public class UsuarioController {
         return ResponseEntity.ok(user_opt.get());
     }
 
-    @PostMapping
+    @PostMapping("/nuevo")
     public ResponseEntity<?> crear(@RequestBody UsuarioEntity user){
         UsuarioEntity user_bd = user_serv.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(user_bd);

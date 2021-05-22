@@ -6,12 +6,12 @@ import java.util.Optional;
 
 public interface IUsuarioService {
 
-    public Iterable<UsuarioEntity> findAll();
+    Iterable<UsuarioEntity> findAll();
 
-    public Optional<UsuarioEntity> findById(String document);
+    Optional<UsuarioEntity> findById(String document);
 
-    public UsuarioEntity save(UsuarioEntity user);
+    UsuarioEntity save(UsuarioEntity user);
 
-    public void deleteById(String document);
+    void deleteById(String document);
 
 }
