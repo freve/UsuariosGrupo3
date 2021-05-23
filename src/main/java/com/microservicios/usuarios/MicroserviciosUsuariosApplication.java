@@ -7,6 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.CrudRepository;
 
+
 @EnableEurekaClient
 @SpringBootApplication
 @EnableJpaRepositories("com.microservicios.usuarios.model.repository")

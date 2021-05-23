@@ -33,15 +33,19 @@ public class UsuarioEntity { //  implements Serializable
     @NotEmpty
     private String institution;
 
+    @NotEmpty
+    private Long profileId;
+
     public UsuarioEntity () {}
 
-    public UsuarioEntity (String documento, String name, String last_name, String email, String password, String institution) {
+    public UsuarioEntity (String documento, String name, String last_name, String email, String password, String institution, Long profileId) {
         this.documento = documento;
         this.name = name;
         this.last_name = last_name;
         this.email = email;
         this.password = password;
         this.institution = institution;
+        this.profileId = profileId;
     }
 
 }

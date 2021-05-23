@@ -13,50 +13,47 @@ import java.util.Optional;
 public class UsuarioController {
 
     @Autowired
-    private IUsuarioService user_serv;
+    private IUsuarioService userServ;
 
     @GetMapping("/listar")
     public ResponseEntity<?> listar(){
-        return ResponseEntity.ok().body(user_serv.findAll());
+        return ResponseEntity.ok().body(userServ.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> ver(@PathVariable String document){
-        Optional<UsuarioEntity> user_opt = user_serv.findById(document);
-        if (user_opt.isEmpty()){
+        Optional<UsuarioEntity> userOpt = userServ.findById(document);
+        if (userOpt.isEmpty()) {
            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(user_opt.get());
+        return ResponseEntity.ok(userOpt.get());
     }
 
     @PostMapping("/nuevo")
     public ResponseEntity<?> crear(@RequestBody UsuarioEntity user){
-        UsuarioEntity user_bd = user_serv.save(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user_bd);
+        UsuarioEntity userBd = userServ.save(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userBd);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> editar(@RequestBody UsuarioEntity user, @PathVariable String document){
-        Optional<UsuarioEntity> user_opt = user_serv.findById(document);
-        if (user_opt.isEmpty()){
+        Optional<UsuarioEntity> userOpt = userServ.findById(document);
+        if (userOpt.isEmpty()) {
            return ResponseEntity.notFound().build();
         }
+        UsuarioEntity userBd = userOpt.get();
+        userBd.setName(user.getName());
+        userBd.setLast_name(user.getLast_name());
+        userBd.setEmail(user.getEmail());
+        userBd.setInstitution(user.getInstitution());
 
-        UsuarioEntity user_bd = user_opt.get();
-        user_bd.setName(user.getName());
-        user_bd.setLast_name(user.getLast_name());
-        user_bd.setEmail(user.getEmail());
-        user_bd.setInstitution(user.getInstitution());
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(user_serv.save(user_bd));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userServ.save(userBd));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable String document){
-
-        user_serv.deleteById(document);
+        userServ.deleteById(document);
         return ResponseEntity.noContent().build();
-
     }
 
 }
